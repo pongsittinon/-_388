@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลส่วนบุคคล</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>ข้อมูลส่วนบุคคล</h1>
+        <a href="index.html">กลับหน้าหลัก</a>
+        <a id="back-to-class" href="#">กลับไปยังรายละเอียดรุ่น</a>
+    </header>
+    <main>
+        <div class="personal-info">
+            <img src="https://i.pinimg.com/736x/ef/3d/c4/ef3dc403cf2cec67df4dcd959c35439f.jpg" alt="รูปสมาชิก">
+            <h2 id="member-name">ชื่อสมาชิก</h2>
+            <p>รุ่น: <span id="class-number"></span></p>
+            <p>อายุ: <span id="member-age"></span></p>
+            <p>อาชีพ: <span id="member-occupation"></span></p>
+            <p>งานอดิเรก: <span id="member-hobby"></span></p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 เว็บไซต์รวมรุ่น</p>
+    </footer>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const classNumber = urlParams.get('class');
+        const memberNumber = urlParams.get('member');
+        document.getElementById('class-number').textContent = classNumber;
+        document.getElementById('back-to-class').href = `class-detail.html?class=${classNumber}`;
+        document.getElementById('member-name').textContent = `ชื่อสมาชิก ${memberNumber}`;
+        document.getElementById('member-age').textContent = Math.floor(Math.random() * 30) + 20;
+        document.getElementById('member-occupation').textContent = 'อาชีพตัวอย่าง';
+        document.getElementById('member-hobby').textContent = 'งานอดิเรกตัวอย่าง';
+    </script>
+</body>
+</html>

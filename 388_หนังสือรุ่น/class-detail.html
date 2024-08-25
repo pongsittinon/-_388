@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายละเอียดรุ่น</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>รายละเอียดรุ่น <span id="class-number"></span></h1>
+        <a href="index.html">กลับหน้าหลัก</a>
+    </header>
+    <main>
+        <div class="member-grid" id="member-grid">
+            <!-- สมาชิกจะถูกเพิ่มด้วย JavaScript -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 เว็บไซต์รวมรุ่น</p>
+    </footer>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const classNumber = urlParams.get('class');
+        document.getElementById('class-number').textContent = classNumber;
+
+        const memberGrid = document.getElementById('member-grid');
+        const names = ['สมชาย', 'สมหญิง', 'วิชัย', 'วิภา', 'ธนา', 'ธิดา', 'ภูมิ', 'ภัทรา', 'ชัย', 'ชมพู'];
+
+        for (let i = 1; i <= 10; i++) {
+            const memberCard = document.createElement('div');
+            memberCard.className = 'member-card';
+            memberCard.innerHTML = `
+                <div class="image-frame">
+                    <img src="https://i.pinimg.com/736x/ef/3d/c4/ef3dc403cf2cec67df4dcd959c35439f.jpg" alt="รูปสมาชิก ${i}">
+                </div>
+                <h3><a href="personal-info.html?class=${classNumber}&member=${i}">${names[i-1]} ${i}</a></h3>
+            `;
+            memberGrid.appendChild(memberCard);
+        }
+    </script>
+</body>
+</html>
